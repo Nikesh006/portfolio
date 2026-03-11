@@ -63,18 +63,14 @@ export function setCharTimeline(
   let neckBone = character?.getObjectByName("spine005");
   const isDesktop = window.innerWidth > 1024;
 
-  if (character) {
+  if (isDesktop && character) {
     tl1
       .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
-      .to(camera.position, { z: isDesktop ? 22 : 35 }, 0)
+      .to(camera.position, { z: 22 }, 0)
       .fromTo(
         ".character-model",
-        { xPercent: -50, y: isDesktop ? "0%" : "5%" },
-        {
-          xPercent: isDesktop ? -75 : -50,
-          y: isDesktop ? "0%" : "15%",
-          duration: 1,
-        },
+        { xPercent: -50 },
+        { xPercent: -75, duration: 1 },
         0
       )
       .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
@@ -85,8 +81,8 @@ export function setCharTimeline(
       .to(
         camera.position,
         {
-          z: isDesktop ? 75 : 95,
-          y: isDesktop ? 8.4 : 12,
+          z: 75,
+          y: 8.4,
           duration: 6,
           delay: 2,
           ease: "power3.inOut",
@@ -100,8 +96,7 @@ export function setCharTimeline(
         { pointerEvents: "inherit" },
         {
           pointerEvents: "none",
-          xPercent: isDesktop ? -62 : -50,
-          y: isDesktop ? "0%" : "10%",
+          xPercent: -62,
           delay: 2,
           duration: 5,
         },
@@ -139,6 +134,16 @@ export function setCharTimeline(
       )
       .fromTo(".whatIDO", { y: 0 }, { y: "15%", duration: 2 }, 0)
       .to(character.rotation, { x: -0.04, duration: 2, delay: 1 }, 0);
+  } else if (!isDesktop && character) {
+    // Basic mobile activation for tech boxes without heavy 3D scroll animations
+    const tM2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".what-box-in",
+        start: "top 70%",
+        end: "bottom top",
+      },
+    });
+    tM2.to(".what-box-in", { display: "flex", duration: 0.1, delay: 0 }, 0);
   }
 }
 

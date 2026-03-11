@@ -5,7 +5,7 @@ import { smoother } from "../Navbar";
 export function initialFX() {
   const mainElement = document.querySelector("main") || document.querySelector(".main-body");
   if (mainElement) {
-    mainElement.classList.add("main-active");
+    (mainElement as HTMLElement).style.opacity = "1";
   }
   document.body.style.overflowY = "auto";
   if (smoother) {

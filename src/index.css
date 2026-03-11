@@ -52,15 +52,7 @@ main {
 }
 
 .main-active {
-  opacity: 0;
-  animation: fadeIn 1s 1;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-  100% {
-    opacity: 1;
-  }
+  opacity: 1;
 }
 
 body {

@@ -106,15 +106,16 @@
 }
 
 .character-model {
+  height: 80%;
   height: 80vh;
-  position: fixed;
+  position: absolute;
   max-width: 1920px;
   max-height: 1080px;
   transform: translateX(-50%);
   width: 100%;
   left: 50%;
-  z-index: 11;
-  bottom: 0px;
+  z-index: 0;
+  bottom: 50px;
   pointer-events: inherit;
 }
 
