@@ -63,45 +63,50 @@ export function setCharTimeline(
   let neckBone = character?.getObjectByName("spine005");
   const isDesktop = window.innerWidth > 1024;
 
-  tl1
-    .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
-    .to(camera.position, { z: isDesktop ? 22 : 35 }, 0)
-    .fromTo(
-      ".character-model",
-      { xPercent: -50, y: isDesktop ? "0%" : "5%" },
-      { xPercent: isDesktop ? -75 : -50, y: isDesktop ? "0%" : "15%", duration: 1 },
-      0
-    )
-    .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
-    .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
-    .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
+  if (character) {
+    tl1
+      .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
+      .to(camera.position, { z: isDesktop ? 22 : 35 }, 0)
+      .fromTo(
+        ".character-model",
+        { xPercent: -50, y: isDesktop ? "0%" : "5%" },
+        {
+          xPercent: isDesktop ? -75 : -50,
+          y: isDesktop ? "0%" : "15%",
+          duration: 1,
+        },
+        0
+      )
+      .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
+      .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
+      .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
 
-  tl2
-    .to(
-      camera.position,
-      {
-        z: isDesktop ? 75 : 95,
-        y: isDesktop ? 8.4 : 12,
-        duration: 6,
-        delay: 2,
-        ease: "power3.inOut",
-      },
-      0
-    )
-    .to(".about-section", { y: "30%", duration: 6 }, 0)
-    .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
-    .fromTo(
-      ".character-model",
-      { pointerEvents: "inherit" },
-      {
-        pointerEvents: "none",
-        xPercent: isDesktop ? -62 : -50,
-        y: isDesktop ? "0%" : "10%",
-        delay: 2,
-        duration: 5,
-      },
-      0
-    )
+    tl2
+      .to(
+        camera.position,
+        {
+          z: isDesktop ? 75 : 95,
+          y: isDesktop ? 8.4 : 12,
+          duration: 6,
+          delay: 2,
+          ease: "power3.inOut",
+        },
+        0
+      )
+      .to(".about-section", { y: "30%", duration: 6 }, 0)
+      .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
+      .fromTo(
+        ".character-model",
+        { pointerEvents: "inherit" },
+        {
+          pointerEvents: "none",
+          xPercent: isDesktop ? -62 : -50,
+          y: isDesktop ? "0%" : "10%",
+          delay: 2,
+          duration: 5,
+        },
+        0
+      )
       .to(character.rotation, { y: 0.92, x: 0.12, delay: 3, duration: 3 }, 0)
       .to(neckBone!.rotation, { x: 0.6, delay: 2, duration: 3 }, 0)
       .to(monitor.material, { opacity: 1, duration: 0.8, delay: 3.2 }, 0)
