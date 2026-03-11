@@ -1,5 +1,6 @@
 import { PropsWithChildren } from "react";
 import "./styles/Landing.css";
+import nikeshPhoto from "../assets/nikesh_photo.jpg";
 
 const Landing = ({ children }: PropsWithChildren) => {
   return (
@@ -7,6 +8,7 @@ const Landing = ({ children }: PropsWithChildren) => {
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
           <div className="landing-intro">
+            <img src={nikeshPhoto} alt="Nikesh" className="landing-photo" />
             <h2>Hello! I'm</h2>
             <h1>
               NIKESH
